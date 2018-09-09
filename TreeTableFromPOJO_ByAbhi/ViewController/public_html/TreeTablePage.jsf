@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="TreeTablePage.jsf" id="d1">
+        <af:form id="f1">
+           
+                <af:treeTable rowBandingInterval="0" id="tt1" value="#{viewScope.TreeTableBean.characterValue}" var="node"
+                              width="400px" inlineStyle="height:600px;" expandAllEnabled="true" columnStretching="last">
+                    <f:facet name="nodeStamp">
+                        <af:column sortable="false" headerText="Index" id="c1">
+                            <af:panelGroupLayout id="pgl1">
+                                <af:link text="#{node.id}" id="l1"
+                                         inlineStyle="#{node.description == '' ? 'font-weight:500;color:navy' : ''}"
+                                         rendered="true"/>
+                                <af:outputText value="#{node.id} | #{node.description}" id="ot1" rendered="false"/>
+                                <af:link text="#{node.description}" id="l2" rendered="true"/>
+                            </af:panelGroupLayout>
+                        </af:column>
+                    </f:facet>
+                </af:treeTable>
+                <af:tree value="#{viewScope.TreeTableBean.characterValue}" var="row" varStatus="vs" id="t1"
+                         rendered="false"/>
+        </af:form>
+    </af:document>
+</f:view>
